@@ -1,4 +1,5 @@
-# TODO: Implement Order Saving and Display
+# TODO: Add Profile Icon and Page
 
-- [x] Update Checkout.jsx to save order details to localStorage after successful order placement
-- [x] Update Orders.jsx to load and display orders from localStorage
+- [x] Create Profile.jsx page with editable user details and order history
+- [x] Add profile icon to Header.jsx
+- [x] Add /profile route to App.jsx
