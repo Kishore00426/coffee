@@ -43,6 +43,30 @@ export default function Checkout() {
 
     // Simulate payment processing
     setTimeout(() => {
+      // Create order object
+      const order = {
+        id: Date.now().toString(),
+        date: new Date().toISOString(),
+        items: cartItems,
+        subtotal: subtotal,
+        tax: tax,
+        shipping: shipping,
+        total: total,
+        shippingInfo: {
+          name: formData.name,
+          email: formData.email,
+          address: formData.address,
+          city: formData.city,
+          zipCode: formData.zipCode
+        },
+        paymentMethod: paymentMethod
+      };
+
+      // Save to localStorage
+      const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+      existingOrders.push(order);
+      localStorage.setItem('orders', JSON.stringify(existingOrders));
+
       toast.success('Order placed successfully! Thank you for your purchase.');
       clearCart();
       navigate('/');
@@ -85,8 +109,8 @@ export default function Checkout() {
                   />
                   <div className="flex-grow">
                     <h4 className="font-semibold">{item.title}</h4>
-                    <p className="text-sm text-gray-600">Quantity: {item.quantity}</p>
-                    <p className="text-sm text-gray-500">${item.price.toFixed(2)} each</p>
+                    <p className="text-sm text-amber-800">Quantity: {item.quantity}</p>
+                    <p className="text-sm text-stone-400">${item.price.toFixed(2)} each</p>
                   </div>
                   <p className="font-bold text-green-600">${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
