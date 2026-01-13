@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import logo from "../assets/logo.jpg";
-import '../app.css';
+import '../App.css';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
